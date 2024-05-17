@@ -14,3 +14,18 @@ p11 <- FeaturePlot_scCustom(seurat_object = sce2, features = "CD3D")
 p22 <- FeaturePlot_scCustom(seurat_object = sce2, features = "CD3D", colors_use = brewer.pal(11, name = "RdBu"),order = T)
 
 p11 + p22
+
+#共表达
+#单基因
+p000 <- Plot_Density_Custom(seurat_object = sce2, features = "CD3D")
+#双基因
+p111 <- Plot_Density_Joint_Only(seurat_object = sce2, 
+                                features = c("CD3D", "CD3E"))
+#多基因
+p222 <- Plot_Density_Joint_Only(seurat_object = sce2, 
+                                features = c("CD3D", "CD3E","CD79A"),
+                                custom_palette = BlueAndRed())
+
+#分面split.by
+FeaturePlot_scCustom(seurat_object = sce2, features = "CD3D", split.by = "orig.ident",
+                     num_columns = 4)
